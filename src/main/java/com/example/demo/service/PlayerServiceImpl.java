@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import java.util.List;
+import com.example.demo.dto.RoleCountDTO;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,6 +16,10 @@ public class PlayerServiceImpl implements PlayerService {
 
     @Autowired
     private PlayerRepository playerRepository;
+    @Override
+    public List<RoleCountDTO> getPlayerCountByRole(String teamName) {
+        return playerRepository.getPlayerCountByRole(teamName);
+    }
 
     @Override
     public Player createPlayer(PlayerDTO playerDTO) {

@@ -2,9 +2,10 @@ package com.example.demo.controller;
 
 import java.util.List;
 
+import com.example.demo.dto.RoleCountDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
+import org.springframework.http.ResponseEntity;
 import com.example.demo.dto.PlayerDTO;
 import com.example.demo.entity.Player;
 import com.example.demo.service.PlayerService;
@@ -36,6 +37,13 @@ public class PlayerController {
             @PathVariable Long playerId) {
 
         return playerService.getPlayerById(playerId);
+    }
+    @GetMapping("/team/{teamName}/roles")
+    public ResponseEntity<List<RoleCountDTO>> getPlayerCountByRole(
+            @PathVariable String teamName) {
+
+        return ResponseEntity.ok(
+                playerService.getPlayerCountByRole(teamName));
     }
 
     @PutMapping("/{playerId}")
